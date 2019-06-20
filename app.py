@@ -27,6 +27,10 @@ def register_template():
 def initialize_database():
     Database.initialize()
 
+@app.route('/logout', methods=['GET'])
+def logout():
+    session['email'] = None
+    return render_template('home.html')
 
 @app.route('/auth/login', methods=['POST'])
 def login_user():
@@ -98,4 +102,4 @@ def create_new_post(blog_id):
 
 
 if __name__ == '__main__':
-    app.run(port=4995)
+    app.run(port=5000)
